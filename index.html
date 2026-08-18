@@ -237,18 +237,19 @@
   .arch-body > *:nth-child(n+7){ transition-delay:.6s; }
 
   .family-row{
-    display:flex; justify-content:space-between; gap:18px;
-    text-align:left;
-    font-size:17px;
+    text-align:center;
+    font-family:var(--body);
+    font-style:italic;
     font-weight:500;
-    line-height:1.55;
-    color:var(--navy-900);
+    font-size:20px;
+    line-height:1.9;
+    color:var(--gold-700);
     margin-bottom:44px;
+    letter-spacing:.02em;
   }
-  .family-row > div{ flex:1; }
-  .family-row .side-r{ text-align:right; }
+  .family-row .line{ display:block; }
   @media (max-width:420px){
-    .family-row{ font-size:15px; }
+    .family-row{ font-size:17px; }
   }
 
   .announce{
@@ -577,13 +578,9 @@
 
         <div class="arch-body">
           <div class="family-row">
-            <div>
-              Mme Bensakoun Chantal<br>
-              Mr Chekli André
-            </div>
-            <div class="side-r">
-              Mr &amp; Mme Lezmi Gabriel
-            </div>
+            <span class="line">Mme Bensakoun Chantal</span>
+            <span class="line">&amp; Mr Chekli André</span>
+            <span class="line">Mr &amp; Mme Lezmi Gabriel</span>
           </div>
 
           <p class="announce">
@@ -715,6 +712,7 @@
                   </select>
                 </div>
               </div>
+              <p class="field-hint">Seuls les enfants de 7 à 14 ans sont conviés à la soirée.</p>
             </div>
 
             <div class="sub-title">Réception</div>
@@ -781,7 +779,7 @@
 
 <!-- ---- background music (place your own royalty-free mp3 in the same folder and update the src below) ---- -->
 <audio id="bgMusic" loop preload="none">
-  <source src="musique.mp3" type="audio/mpeg">
+  <source src="musique-douce-israelienne.mp3" type="audio/mpeg">
 </audio>
 
 <div id="soundBtn">
@@ -825,7 +823,7 @@
       }, 120);
     }).catch(() => {
       // No mp3 file has been added yet — silently ignored until you drop
-      // "musique-douce-israelienne.mp3" next to this file.
+      // "musique.mp3" next to this file.
     });
   }
 
