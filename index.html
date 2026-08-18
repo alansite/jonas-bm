@@ -241,16 +241,13 @@
     font-family:var(--body);
     font-style:italic;
     font-weight:500;
-    font-size:20px;
+    font-size:clamp(14px,4.6vw,20px);
     line-height:1.9;
     color:var(--gold-700);
     margin-bottom:44px;
     letter-spacing:.02em;
   }
-  .family-row .line{ display:block; }
-  @media (max-width:420px){
-    .family-row{ font-size:17px; }
-  }
+  .family-row .line{ display:block; white-space:nowrap; }
 
   .announce{
     font-size:21px;
@@ -779,7 +776,7 @@
 
 <!-- ---- background music (place your own royalty-free mp3 in the same folder and update the src below) ---- -->
 <audio id="bgMusic" loop preload="none">
-  <source src="musique-douce-israelienne.mp3" type="audio/mpeg">
+  <source src="musique.mp3" type="audio/mpeg">
 </audio>
 
 <div id="soundBtn">
@@ -821,11 +818,15 @@
         bgMusic.volume = Math.min(v, 0.5);
         if (v >= 0.5) clearInterval(fade);
       }, 120);
-    }).catch(() => {
-      // No mp3 file has been added yet — silently ignored until you drop
-      // "musique.mp3" next to this file.
+    }).catch((err) => {
+      // Visible diagnostic instead of silent failure — check the browser
+      // console (clic droit > Inspecter > Console) if music doesn't play.
+      console.warn('Musique non lancée — vérifiez que "musique.mp3" est bien dans le même dossier que ce fichier HTML.', err);
     });
   }
+  bgMusic.addEventListener('error', () => {
+    console.warn('Fichier "musique.mp3" introuvable ou illisible à cet emplacement.');
+  });
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
