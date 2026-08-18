@@ -303,6 +303,11 @@
   }
   .btn-ghost:hover{ background:var(--navy-900); color:var(--gold-400); border-color:var(--navy-900); }
 
+  .btn-row{
+    display:flex; flex-wrap:wrap; gap:12px; justify-content:center;
+  }
+  .cal-btn svg{ width:13px; height:13px; }
+
   /* ================= RSVP FORM ================= */
   .field{ margin-bottom:30px; text-align:left; }
   .field input[type=text], .field textarea{
@@ -328,19 +333,51 @@
   }
   .radio-group input{ width:19px; height:19px; accent-color:var(--navy-800); }
 
+  .counts-wrap{
+    display:grid;
+    grid-template-rows:1fr;
+    opacity:1;
+    margin-bottom:8px;
+    transition:grid-template-rows .45s ease, opacity .4s ease, margin .45s ease;
+  }
+  .counts-wrap.hidden{
+    grid-template-rows:0fr;
+    opacity:0;
+    margin-bottom:0;
+  }
+  .counts-wrap > *{ min-height:0; overflow:hidden; }
+
   .num-row{ display:flex; gap:20px; text-align:left; margin-bottom:8px; }
   .num-row .field{ flex:1; margin-bottom:0; }
-  .num-row input[type=number]{
-    width:100%; border:none; border-bottom:1.5px solid var(--navy-500);
-    background:transparent; font-family:var(--body); font-size:19px;
-    color:var(--navy-900); padding:8px 2px; outline:none;
+
+  .select-field{ position:relative; }
+  .select-label{
+    display:block;
+    font-size:12px;
+    font-family:var(--label);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--gold-700);
+    margin-bottom:6px;
   }
-  .num-row input[type=number]:focus{ border-color:var(--gold-600); }
+  .select-field select{
+    width:100%;
+    border:none; border-bottom:1.5px solid var(--navy-500);
+    background:transparent
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23b8922f' d='M5.5 7.5l4.5 4.5 4.5-4.5z'/%3E%3C/svg%3E") no-repeat right 2px center;
+    background-size:16px;
+    appearance:none; -webkit-appearance:none; -moz-appearance:none;
+    font-family:var(--body); font-size:19px;
+    color:var(--navy-900); padding:8px 26px 8px 2px; outline:none;
+    cursor:pointer;
+    transition:border-color .3s ease;
+  }
+  .select-field select:focus{ border-color:var(--gold-600); }
   @media (max-width:420px){ .num-row{ flex-direction:column; gap:14px; } }
 
   .field-hint{
     font-size:14px; font-style:italic; color:var(--gold-700);
-    margin:0 0 30px;
+    margin:14px 0 0;
   }
   .field-hint.todo{
     color:var(--navy-500);
@@ -386,9 +423,75 @@
   .thanks.show{ display:block; }
   form.hide{ display:none; }
 
-  /* ---- reveal on scroll ---- */
-  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease; }
-  .reveal.in{ opacity:1; transform:translateY(0); }
+  /* ---- reveal on scroll (bigger, more dramatic entrance) ---- */
+  body{ perspective:1200px; }
+  .reveal{
+    opacity:0;
+    transform:translateY(46px) scale(.9) rotateX(8deg);
+    transform-origin:center top;
+    transition:opacity 1s cubic-bezier(.22,.9,.28,1), transform 1s cubic-bezier(.22,.9,.28,1);
+  }
+  .reveal.in{ opacity:1; transform:translateY(0) scale(1) rotateX(0); }
+
+  /* ---- shimmering gold sweep on script titles ---- */
+  .arch-title, .child-script{
+    background:linear-gradient(100deg,
+      var(--navy-900) 25%, var(--navy-900) 42%,
+      var(--gold-400) 48%, var(--gold-500) 52%,
+      var(--navy-900) 58%, var(--navy-900) 100%);
+    background-size:260% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:var(--navy-900);
+    animation:titleShimmer 5s ease-in-out infinite;
+  }
+  @keyframes titleShimmer{
+    0%{ background-position:180% 0; }
+    60%,100%{ background-position:-60% 0; }
+  }
+
+  /* ---- countdown pulse each second ---- */
+  .countdown .num.bump{ animation:numBump .5s ease; }
+  @keyframes numBump{
+    0%{ transform:scale(1); }
+    35%{ transform:scale(1.28); color:var(--gold-600); }
+    100%{ transform:scale(1); }
+  }
+
+  /* ---- floating gold sparkles ---- */
+  .sparkles{
+    position:fixed; inset:0; z-index:2;
+    pointer-events:none; overflow:hidden;
+  }
+  .sparkles span{
+    position:absolute;
+    bottom:-10px;
+    width:5px; height:5px;
+    border-radius:50%;
+    background:var(--gold-400);
+    box-shadow:0 0 8px 2px rgba(228,198,114,0.9), 0 0 2px rgba(255,255,255,0.8);
+    opacity:0;
+    animation:sparkleRise linear infinite;
+  }
+  @keyframes sparkleRise{
+    0%{ opacity:0; transform:translateY(0) translateX(0) scale(.6); }
+    12%{ opacity:1; }
+    85%{ opacity:.8; }
+    100%{ opacity:0; transform:translateY(-112vh) translateX(var(--drift,18px)) scale(1.1); }
+  }
+  .sparkles span:nth-child(1){ left:4%;  width:4px;height:4px; --drift:14px; animation-duration:9s;  animation-delay:.2s; }
+  .sparkles span:nth-child(2){ left:12%; width:6px;height:6px; --drift:-20px; animation-duration:12s; animation-delay:2.1s; }
+  .sparkles span:nth-child(3){ left:20%; width:3px;height:3px; --drift:10px; animation-duration:8s;  animation-delay:.9s; }
+  .sparkles span:nth-child(4){ left:29%; width:5px;height:5px; --drift:-16px; animation-duration:11s; animation-delay:3.4s; }
+  .sparkles span:nth-child(5){ left:38%; width:4px;height:4px; --drift:22px; animation-duration:10s; animation-delay:1.6s; }
+  .sparkles span:nth-child(6){ left:47%; width:7px;height:7px; --drift:-12px; animation-duration:13s; animation-delay:4.2s; }
+  .sparkles span:nth-child(7){ left:56%; width:3px;height:3px; --drift:18px; animation-duration:9.5s; animation-delay:.5s; }
+  .sparkles span:nth-child(8){ left:64%; width:5px;height:5px; --drift:-24px; animation-duration:12.5s; animation-delay:2.8s; }
+  .sparkles span:nth-child(9){ left:72%; width:4px;height:4px; --drift:14px; animation-duration:8.5s;  animation-delay:1.1s; }
+  .sparkles span:nth-child(10){ left:80%; width:6px;height:6px; --drift:-18px; animation-duration:11.5s; animation-delay:3.9s; }
+  .sparkles span:nth-child(11){ left:88%; width:3px;height:3px; --drift:20px; animation-duration:10.5s; animation-delay:.7s; }
+  .sparkles span:nth-child(12){ left:94%; width:5px;height:5px; --drift:-14px; animation-duration:9.8s; animation-delay:2.4s; }
+  .sparkles span:nth-child(13){ left:55%; width:4px;height:4px; --drift:16px; animation-duration:13.5s; animation-delay:5s; }
+  .sparkles span:nth-child(14){ left:17%; width:3px;height:3px; --drift:-10px; animation-duration:14s; animation-delay:6.1s; }
 
   /* ---- footer ---- */
   footer{
@@ -415,6 +518,11 @@
 </style>
 </head>
 <body>
+
+<div class="sparkles" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
 
 <!-- ================= INTRO ================= -->
 <div id="intro">
@@ -494,10 +602,16 @@
             <p class="place">Synagogue Chasseloup‑Laubat</p>
             <p class="addr">Paracha Vayera</p>
             <p class="note">L'office sera suivi d'un petit déjeuner</p>
-            <a class="btn-ghost" target="_blank" rel="noopener"
-               href="https://www.google.com/maps/search/?api=1&query=Synagogue%20Chasseloup%20Laubat%20Paris">
-              Itinéraire
-            </a>
+            <div class="btn-row">
+              <a class="btn-ghost" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=Synagogue%20Chasseloup%20Laubat%20Paris">
+                Itinéraire
+              </a>
+              <a class="btn-ghost cal-btn" id="calTefiline" target="_blank" rel="noopener" href="#">
+                <svg viewBox="0 0 448 512" fill="currentColor"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192H400V448c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192z"/></svg>
+                Ajouter au calendrier
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -529,10 +643,16 @@
             <p class="time">à partir de 19h30</p>
             <p class="place">MCF2</p>
             <p class="addr">1 Quai de la Révolution<br>94140 Alfortville</p>
-            <a class="btn-ghost" target="_blank" rel="noopener"
-               href="https://www.google.com/maps/search/?api=1&query=1%20Quai%20de%20la%20R%C3%A9volution%2C%2094140%20Alfortville">
-              Itinéraire
-            </a>
+            <div class="btn-row">
+              <a class="btn-ghost" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=1%20Quai%20de%20la%20R%C3%A9volution%2C%2094140%20Alfortville">
+                Itinéraire
+              </a>
+              <a class="btn-ghost cal-btn" id="calReception" target="_blank" rel="noopener" href="#">
+                <svg viewBox="0 0 448 512" fill="currentColor"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192H400V448c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192z"/></svg>
+                Ajouter au calendrier
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -564,9 +684,37 @@
               <label><input type="radio" name="tef" value="oui" required> Oui à la Mise des téfilines</label>
               <label><input type="radio" name="tef" value="non"> Ne pourra pas être présent</label>
             </div>
-            <div class="num-row">
-              <div class="field"><input type="number" id="tefAdultes" min="0" placeholder="Nombre d'adultes"></div>
-              <div class="field"><input type="number" id="tefEnfants" min="0" placeholder="Nombre d'enfants"></div>
+            <div class="counts-wrap" id="tefCounts">
+              <div class="num-row">
+                <div class="field select-field">
+                  <label class="select-label">Nombre d'adultes</label>
+                  <select id="tefAdultes">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                  </select>
+                </div>
+                <div class="field select-field">
+                  <label class="select-label">Nombre d'enfants</label>
+                  <select id="tefEnfants">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                  </select>
+                </div>
+              </div>
             </div>
 
             <div class="sub-title">Réception</div>
@@ -574,11 +722,39 @@
               <label><input type="radio" name="rec" value="oui" required> Oui à la Réception</label>
               <label><input type="radio" name="rec" value="non"> Ne pourra pas être présent</label>
             </div>
-            <div class="num-row">
-              <div class="field"><input type="number" id="recAdultes" min="0" placeholder="Nombre d'adultes"></div>
-              <div class="field"><input type="number" id="recEnfants" min="0" max="99" placeholder="Nombre d'enfants (7-14 ans)"></div>
+            <div class="counts-wrap" id="recCounts">
+              <div class="num-row">
+                <div class="field select-field">
+                  <label class="select-label">Nombre d'adultes</label>
+                  <select id="recAdultes">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                  </select>
+                </div>
+                <div class="field select-field">
+                  <label class="select-label">Nombre d'enfants (7-14 ans)</label>
+                  <select id="recEnfants">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                  </select>
+                </div>
+              </div>
+              <p class="field-hint">Seuls les enfants de 7 à 14 ans sont conviés à la soirée.</p>
             </div>
-            <p class="field-hint">Seuls les enfants de 7 à 14 ans sont conviés à la soirée.</p>
 
             <div class="field">
               <textarea id="message" placeholder="Message pour le Bar Mitsva"></textarea>
@@ -649,7 +825,7 @@
       }, 120);
     }).catch(() => {
       // No mp3 file has been added yet — silently ignored until you drop
-      // "musique.mp3" next to this file.
+      // "musique-douce-israelienne.mp3" next to this file.
     });
   }
 
@@ -688,10 +864,64 @@
     document.getElementById('cd-days').textContent = days;
     document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
     document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
-    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+    const secsEl = document.getElementById('cd-secs');
+    secsEl.textContent = String(secs).padStart(2,'0');
+    secsEl.classList.remove('bump');
+    void secsEl.offsetWidth; // restart animation
+    secsEl.classList.add('bump');
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // =====================================================================
+  // ---- "Ajouter au calendrier" (.ics) — fonctionne avec Calendrier iPhone
+  // =====================================================================
+  function buildICSLink({ uid, title, description, location, start, end }){
+    const fmt = (d) => d.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+    const escapeICS = (s) => String(s).replace(/([,;])/g,'\\$1').replace(/\n/g,'\\n');
+    const lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//BarMitsvaJonas//FR',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'BEGIN:VEVENT',
+      'UID:' + uid + '@barmitsva-jonas',
+      'DTSTAMP:' + fmt(new Date()),
+      'DTSTART:' + fmt(start),
+      'DTEND:' + fmt(end),
+      'SUMMARY:' + escapeICS(title),
+      'LOCATION:' + escapeICS(location),
+      'DESCRIPTION:' + escapeICS(description),
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+    return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(lines);
+  }
+
+  const calTefiline = document.getElementById('calTefiline');
+  if (calTefiline){
+    calTefiline.href = buildICSLink({
+      uid: 'tefiline-jonas',
+      title: 'Mise des téfilines de Jonas',
+      description: "Bar Mitsva de Jonas — mise des téfilines, suivie d'un petit déjeuner.",
+      location: 'Synagogue Chasseloup-Laubat, Paris',
+      start: new Date('2026-10-29T08:30:00+01:00'),
+      end: new Date('2026-10-29T10:00:00+01:00')
+    });
+  }
+
+  const calReception = document.getElementById('calReception');
+  if (calReception){
+    calReception.href = buildICSLink({
+      uid: 'reception-jonas',
+      title: 'Bar Mitsva de Jonas — Réception',
+      description: "Réception donnée par Albert en l'honneur de la Bar Mitsva de Jonas.",
+      location: 'MCF2, 1 Quai de la Révolution, 94140 Alfortville',
+      start: new Date('2026-10-29T19:30:00+01:00'),
+      end: new Date('2026-10-30T00:30:00+01:00')
+    });
+  }
 
   // =====================================================================
   // ---- RSVP submission -> Google Sheet (via Google Apps Script) -------
@@ -705,6 +935,22 @@
   const form = document.getElementById('rsvpForm');
   const thanks = document.getElementById('thanks');
   const submitBtn = document.getElementById('submitBtn');
+
+  // Show the adults/children counters only when "Oui" is selected;
+  // hide them entirely (and stop counting them) when "Non" is selected.
+  function bindCountsToggle(radioName, wrapId){
+    const wrap = document.getElementById(wrapId);
+    const radios = form.querySelectorAll(`input[name="${radioName}"]`);
+    function update(){
+      const checked = form.querySelector(`input[name="${radioName}"]:checked`);
+      if (checked && checked.value === 'oui') { wrap.classList.remove('hidden'); }
+      else { wrap.classList.add('hidden'); }
+    }
+    radios.forEach(r => r.addEventListener('change', update));
+    update();
+  }
+  bindCountsToggle('tef', 'tefCounts');
+  bindCountsToggle('rec', 'recCounts');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
