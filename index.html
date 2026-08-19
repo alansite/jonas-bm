@@ -237,17 +237,18 @@
   .arch-body > *:nth-child(n+7){ transition-delay:.6s; }
 
   .family-row{
-    text-align:center;
+    display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
     font-family:var(--body);
-    font-style:italic;
-    font-weight:500;
-    font-size:clamp(14px,4.6vw,20px);
-    line-height:1.9;
-    color:var(--gold-700);
+    font-style:normal;
+    font-weight:700;
+    font-size:clamp(11px,3.1vw,15px);
+    line-height:1.35;
+    color:var(--gold-600);
     margin-bottom:44px;
-    letter-spacing:.02em;
+    letter-spacing:.01em;
   }
-  .family-row .line{ display:block; white-space:nowrap; }
+  .family-row .side-l{ text-align:left; flex:0 1 48%; }
+  .family-row .side-r{ text-align:right; flex:0 1 48%; }
 
   .announce{
     font-size:21px;
@@ -575,9 +576,8 @@
 
         <div class="arch-body">
           <div class="family-row">
-            <span class="line">Mme Bensakoun Chantal</span>
-            <span class="line">&amp; Mr Chekli André</span>
-            <span class="line">Mr &amp; Mme Lezmi Gabriel</span>
+            <span class="side-l">Mme Bensakoun Chantal &amp; Mr Chekli André</span>
+            <span class="side-r">Mr &amp; Mme Lezmi Gabriel</span>
           </div>
 
           <p class="announce">
