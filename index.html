@@ -1034,17 +1034,18 @@
     e.preventDefault();
 
     const payload = {
-      nom: document.getElementById('nom').value.trim(),
-      prenom: document.getElementById('prenom').value.trim(),
-      tefiline: form.querySelector('input[name="tef"]:checked')?.value || '',
-      tefilineAdultes: document.getElementById('tefAdultes').value || 0,
-      tefilineEnfants: document.getElementById('tefEnfants').value || 0,
-      reception: form.querySelector('input[name="rec"]:checked')?.value || '',
-      receptionAdultes: document.getElementById('recAdultes').value || 0,
-      receptionEnfants: document.getElementById('recEnfants').value || 0,
-      message: document.getElementById('message').value.trim(),
-      dateEnvoi: new Date().toISOString()
-    };
+  source: 'Site1',   // <-- ajouté
+  nom: document.getElementById('nom').value.trim(),
+  prenom: document.getElementById('prenom').value.trim(),
+  tefiline: form.querySelector('input[name="tef"]:checked')?.value || '',
+  tefilineAdultes: document.getElementById('tefAdultes').value || 0,
+  tefilineEnfants: document.getElementById('tefEnfants').value || 0,
+  reception: form.querySelector('input[name="rec"]:checked')?.value || '',
+  receptionAdultes: document.getElementById('recAdultes').value || 0,
+  receptionEnfants: document.getElementById('recEnfants').value || 0,
+  message: document.getElementById('message').value.trim(),
+  dateEnvoi: new Date().toISOString()
+};
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Envoi en cours...';
