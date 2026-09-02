@@ -4,12 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Bar Mitsva de Jonas — 29 Octobre 2026</title>
+
+<!-- ==== Aperçu de lien (WhatsApp, iMessage, SMS...) ==== -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jonas vous invite à sa Bar Mitsva">
+<meta property="og:description" content="Jeudi 29 Octobre 2026 — Synagogue Chasseloup-Laubat, Paris">
+<meta property="og:image" content="https://www.barmistva-jonas.online/cover.jpg">
+<meta property="og:url" content="https://www.barmistva-jonas.online/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jonas vous invite à sa Bar Mitsva">
+<meta name="twitter:description" content="Jeudi 29 Octobre 2026 — Synagogue Chasseloup-Laubat, Paris">
+<meta name="twitter:image" content="https://www.barmistva-jonas.online/cover.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* ---- navy / gold / marble palette ---- */
     --navy-950:#0a1230;
     --navy-900:#0f1c48;
     --navy-800:#152459;
@@ -30,43 +41,32 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
- 
   body{
     margin:0;
     font-family:var(--body);
     color:var(--navy-900);
     background:
-      /* gold speckles top-right */
       radial-gradient(circle 3px at 92% 4%, rgba(217,172,53,0.55), transparent 100%),
       radial-gradient(circle 2px at 95% 8%, rgba(217,172,53,0.5), transparent 100%),
       radial-gradient(circle 2px at 88% 2%, rgba(217,172,53,0.45), transparent 100%),
       radial-gradient(circle 4px at 97% 12%, rgba(217,172,53,0.4), transparent 100%),
-      /* gold speckles bottom-right */
       radial-gradient(circle 3px at 94% 88%, rgba(217,172,53,0.5), transparent 100%),
       radial-gradient(circle 2px at 90% 93%, rgba(217,172,53,0.45), transparent 100%),
       radial-gradient(circle 2px at 97% 82%, rgba(217,172,53,0.4), transparent 100%),
-      /* navy brush stroke bottom-left, angled */
       linear-gradient(200deg, transparent 55%, rgba(21,36,89,0.16) 60%, rgba(21,36,89,0.22) 68%, rgba(21,36,89,0.10) 78%, transparent 88%),
-      /* navy brush stroke top-right */
       linear-gradient(20deg, transparent 60%, rgba(21,36,89,0.10) 68%, rgba(21,36,89,0.14) 74%, transparent 85%),
-      /* base ivory */
       #f6f2e9;
     background-repeat:no-repeat;
     background-size:cover;
     background-attachment:fixed;
     -webkit-font-smoothing:antialiased;
-}
-
+  }
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
   }
   a{color:inherit; text-decoration:none;}
-
-  /* -------- Star of David mark -------- */
   .star{ display:block; }
   .star path{ fill:none; stroke:currentColor; stroke-width:1.7; stroke-linejoin:round; stroke-linecap:round; }
-
-  /* ================= NAV ================= */
   nav{
     position:sticky; top:0; z-index:50;
     display:flex; align-items:center; justify-content:space-between;
@@ -93,13 +93,9 @@
     .nav-links{ gap:16px; }
     .nav-links a{ font-size:11px; }
   }
-
-  /* hidden until invitation opened */
   body:not(.opened) nav,
   body:not(.opened) #content{ display:none; }
-
-  /* ================= INTRO / COVER ================= */
- #intro{
+  #intro{
     height:100svh;
     height:100dvh;
     display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
@@ -107,66 +103,57 @@
     position:relative;
     overflow:hidden;
     background:
-      /* veines de marbre très subtiles */
       radial-gradient(ellipse 400px 200px at 25% 15%, rgba(180,175,165,0.12), transparent 70%),
       radial-gradient(ellipse 500px 300px at 75% 70%, rgba(190,185,175,0.10), transparent 70%),
       radial-gradient(ellipse 350px 250px at 60% 30%, rgba(170,165,155,0.08), transparent 70%),
-      /* petites touches dorées éparpillées */
       radial-gradient(circle 2px at 15% 25%, rgba(217,172,53,0.5), transparent 100%),
       radial-gradient(circle 3px at 85% 15%, rgba(217,172,53,0.45), transparent 100%),
       radial-gradient(circle 2px at 70% 80%, rgba(217,172,53,0.5), transparent 100%),
       radial-gradient(circle 2px at 30% 85%, rgba(217,172,53,0.4), transparent 100%),
       radial-gradient(circle 3px at 90% 60%, rgba(217,172,53,0.45), transparent 100%),
-      /* fond crème/ivoire, couleur dominante */
       #ede7db;
     background-repeat:no-repeat;
     background-size:cover;
-}
+  }
   body.opened #intro{ display:none; }
-.intro-photo{
+  .intro-photo{
     position:absolute;
     inset:0;
     width:100%;
     height:100%;
     overflow:hidden;
     background:
-      /* veines de marbre douces, réparties uniformément */
       radial-gradient(ellipse 500px 300px at 20% 20%, rgba(170,165,155,0.10), transparent 65%),
       radial-gradient(ellipse 450px 350px at 80% 25%, rgba(180,175,165,0.09), transparent 65%),
       radial-gradient(ellipse 400px 300px at 30% 75%, rgba(175,170,160,0.08), transparent 65%),
       radial-gradient(ellipse 500px 350px at 75% 80%, rgba(185,180,170,0.10), transparent 65%),
       radial-gradient(ellipse 350px 250px at 55% 45%, rgba(165,160,150,0.07), transparent 65%),
-      /* touches dorées éparpillées, sans direction marquée */
       radial-gradient(circle 2px at 12% 30%, rgba(217,172,53,0.45), transparent 100%),
       radial-gradient(circle 3px at 88% 20%, rgba(217,172,53,0.4), transparent 100%),
       radial-gradient(circle 2px at 25% 65%, rgba(217,172,53,0.45), transparent 100%),
       radial-gradient(circle 2px at 75% 60%, rgba(217,172,53,0.4), transparent 100%),
       radial-gradient(circle 3px at 45% 85%, rgba(217,172,53,0.4), transparent 100%),
       radial-gradient(circle 2px at 90% 75%, rgba(217,172,53,0.4), transparent 100%),
-      /* base crème/ivoire marbre */
       #ede7db;
     background-repeat:no-repeat;
     background-size:cover;
     opacity:0;
     transform:scale(1.01);
     animation:introPhotoReveal 1.4s cubic-bezier(.22,.9,.28,1) forwards;
-}
-.intro-photo img{
+  }
+  .intro-photo img{
     width:100%; height:100%;
     object-fit:contain;
     object-position:center 30%;
-}
-.intro-photo::after{
+  }
+  .intro-photo::after{
     content:"";
     position:absolute; inset:0;
     background:
-      /* voile sombre en haut */
       linear-gradient(180deg, rgba(7,12,34,0.75) 0%, rgba(9,16,42,0.20) 15%, rgba(10,18,48,0) 30%),
-      /* voile sombre en bas (comme avant) */
       linear-gradient(180deg, rgba(10,18,48,0) 38%, rgba(9,16,42,0.30) 62%, rgba(7,12,34,0.92) 100%);
     pointer-events:none;
-}
-
+  }
   @keyframes introPhotoReveal{
     from{ opacity:0; transform:scale(1.01); }
     to{ opacity:1; transform:scale(1); }
@@ -175,7 +162,7 @@
     from{ transform:scale(1) translateY(0); }
     to{ transform:scale(1.015) translateY(-0.5%); }
   }
-.intro-below{
+  .intro-below{
     position:absolute;
     left:0; right:0; bottom:0;
     z-index:2;
@@ -183,8 +170,8 @@
     margin:0;
     padding:0 24px calc(36px + env(safe-area-inset-bottom, 0px));
     display:flex; flex-direction:column; align-items:flex-start;
-}
-.countdown{
+  }
+  .countdown{
     display:flex; gap:16px; justify-content:flex-start; margin:0 0 22px;
     padding:14px 18px;
     background:rgba(8,14,38,0.55);
@@ -194,25 +181,23 @@
     -webkit-backdrop-filter:blur(6px);
     opacity:0; transform:translateY(16px);
     animation:introFadeUp .8s ease .3s forwards;
-}
-.countdown .unit{ display:flex; flex-direction:column; align-items:center; min-width:44px; }
-.countdown .num{
+  }
+  .countdown .unit{ display:flex; flex-direction:column; align-items:center; min-width:44px; }
+  .countdown .num{
     font-family:var(--label); font-size:26px; font-weight:600;
     color:var(--gold-400); line-height:1;
     text-shadow:0 2px 10px rgba(0,0,0,0.7);
-}
-.countdown .lbl{
+  }
+  .countdown .lbl{
     font-family:var(--label); font-size:9px; letter-spacing:.14em; text-transform:uppercase;
     color:#ffffff; margin-top:6px;
     text-shadow:0 1px 6px rgba(0,0,0,0.7);
-}
-.countdown .sep{ color:var(--gold-400); font-size:20px; align-self:center; padding-bottom:14px; text-shadow:0 1px 6px rgba(0,0,0,0.6); }
-
+  }
+  .countdown .sep{ color:var(--gold-400); font-size:20px; align-self:center; padding-bottom:14px; text-shadow:0 1px 6px rgba(0,0,0,0.6); }
   @keyframes introFadeUp{
     from{ opacity:0; transform:translateY(16px); }
     to{ opacity:1; transform:translateY(0); }
   }
-
   .btn{
     display:inline-flex; align-items:center; gap:10px;
     background:var(--navy-900);
@@ -236,8 +221,6 @@
     0%, 100%{ box-shadow:0 0 0 0 rgba(217,172,53,0.35); }
     50%{ box-shadow:0 0 0 9px rgba(217,172,53,0); }
   }
-
-  /* ================= ARCH CARD ================= */
   .arch-wrap{
     max-width:640px;
     margin:0 auto;
@@ -299,7 +282,6 @@
   .arch-body > *:nth-child(5){ transition-delay:.45s; }
   .arch-body > *:nth-child(6){ transition-delay:.55s; }
   .arch-body > *:nth-child(n+7){ transition-delay:.6s; }
-
   .family-row{
     display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
     font-family:var(--body);
@@ -313,7 +295,6 @@
   }
   .family-row .side-l{ text-align:left; flex:0 1 48%; white-space:nowrap; }
   .family-row .side-r{ text-align:right; flex:0 1 48%; white-space:nowrap; }
-
   .announce{
     font-size:21px;
     line-height:1.65;
@@ -334,7 +315,6 @@
     color:var(--gold-700);
     margin:0 0 36px;
   }
-
   .details p{
     font-size:19px;
     line-height:1.6;
@@ -350,7 +330,6 @@
     border-top:1px solid rgba(61,83,134,0.22);
     padding-top:18px; margin-top:18px; margin-bottom:26px;
   }
-
   .btn-ghost{
     display:inline-flex; align-items:center; gap:8px;
     border:1.5px solid var(--gold-600);
@@ -365,13 +344,10 @@
     transition:background .3s ease, color .3s ease;
   }
   .btn-ghost:hover{ background:var(--navy-900); color:var(--gold-400); border-color:var(--navy-900); }
-
   .btn-row{
     display:flex; flex-wrap:wrap; gap:12px; justify-content:center;
   }
   .cal-btn svg{ width:13px; height:13px; }
-
-  /* ================= MAP EMBED ================= */
   .map-embed{
     width:100%;
     margin:22px 0 26px;
@@ -386,8 +362,6 @@
     height:230px;
     border:0;
   }
-
-  /* ================= RSVP FORM ================= */
   .field{ margin-bottom:30px; text-align:left; }
   .field input[type=text], .field textarea{
     width:100%;
@@ -403,7 +377,6 @@
   .field input::placeholder, .field textarea::placeholder{ color:var(--navy-300); opacity:.9; }
   .field input:focus, .field textarea:focus{ border-color:var(--gold-600); }
   .field textarea{ resize:vertical; min-height:70px; }
-
   .radio-group{ text-align:left; margin-bottom:18px; }
   .radio-group label{
     display:flex; align-items:center; gap:10px;
@@ -411,7 +384,6 @@
     margin-bottom:10px; cursor:pointer;
   }
   .radio-group input{ width:19px; height:19px; accent-color:var(--navy-800); }
-
   .counts-wrap{
     display:grid;
     grid-template-rows:1fr;
@@ -425,10 +397,8 @@
     margin-bottom:0;
   }
   .counts-wrap > *{ min-height:0; overflow:hidden; }
-
   .num-row{ display:flex; gap:20px; text-align:left; margin-bottom:8px; }
   .num-row .field{ flex:1; margin-bottom:0; }
-
   .select-field{ position:relative; }
   .select-label{
     display:block;
@@ -453,7 +423,6 @@
   }
   .select-field select:focus{ border-color:var(--gold-600); }
   @media (max-width:420px){ .num-row{ flex-direction:column; gap:14px; } }
-
   .field-hint{
     font-size:14px; font-style:italic; color:var(--gold-700);
     margin:14px 0 0;
@@ -464,7 +433,6 @@
     padding:8px 10px;
     border-radius:8px;
   }
-
   .sub-title{
     font-family:var(--label);
     font-size:13px; letter-spacing:.2em; text-transform:uppercase;
@@ -473,7 +441,6 @@
     border-bottom:1.5px solid var(--gold-500);
   }
   .sub-title:first-of-type{ margin-top:6px; }
-
   .submit-btn{
     width:100%;
     background:var(--navy-900);
@@ -491,7 +458,6 @@
   }
   .submit-btn:disabled{ opacity:.6; cursor:wait; }
   .submit-btn:hover:not(:disabled){ background:var(--navy-700); }
-
   .thanks{
     display:none;
     font-family:var(--script);
@@ -501,8 +467,6 @@
   }
   .thanks.show{ display:block; }
   form.hide{ display:none; }
-
-  /* ---- reveal on scroll (bigger, more dramatic entrance) ---- */
   body{ perspective:1200px; }
   .reveal{
     opacity:0;
@@ -511,8 +475,6 @@
     transition:opacity 1s cubic-bezier(.22,.9,.28,1), transform 1s cubic-bezier(.22,.9,.28,1);
   }
   .reveal.in{ opacity:1; transform:translateY(0) scale(1) rotateX(0); }
-
-  /* ---- shimmering gold sweep on script titles ---- */
   .arch-title, .child-script{
     background:linear-gradient(100deg,
       var(--navy-900) 25%, var(--navy-900) 42%,
@@ -527,16 +489,12 @@
     0%{ background-position:180% 0; }
     60%,100%{ background-position:-60% 0; }
   }
-
-  /* ---- countdown pulse each second ---- */
   .countdown .num.bump{ animation:numBump .5s ease; }
   @keyframes numBump{
     0%{ transform:scale(1); }
     35%{ transform:scale(1.28); color:var(--gold-600); }
     100%{ transform:scale(1); }
   }
-
-  /* ---- floating gold sparkles ---- */
   .sparkles{
     position:fixed; inset:0; z-index:2;
     pointer-events:none; overflow:hidden;
@@ -571,15 +529,11 @@
   .sparkles span:nth-child(12){ left:94%; width:5px;height:5px; --drift:-14px; animation-duration:9.8s; animation-delay:2.4s; }
   .sparkles span:nth-child(13){ left:55%; width:4px;height:4px; --drift:16px; animation-duration:13.5s; animation-delay:5s; }
   .sparkles span:nth-child(14){ left:17%; width:3px;height:3px; --drift:-10px; animation-duration:14s; animation-delay:6.1s; }
-
-  /* ---- footer ---- */
   footer{
     text-align:center; padding:50px 24px 60px; color:var(--navy-500);
   }
   footer .logo{ margin:0 auto 14px; }
   footer p{ margin:2px 0; font-size:13px; letter-spacing:.06em; font-family:var(--label); }
-
-  /* ---- sound button ---- */
   #soundBtn{
     position:fixed; bottom:22px; right:22px; z-index:60;
     width:56px; height:56px; border-radius:50%;
@@ -878,10 +832,6 @@
       });
     }, 50);
     document.getElementById('tefiline').scrollIntoView({behavior:'smooth', block:'start'});
-    // Music starts automatically the instant the invitation is opened.
-    // Browsers block unmuted autoplay before any interaction, but this
-    // click on "Voir l'invitation" IS that interaction, so no second tap
-    // on the sound button is needed — it just plays.
     startMusic();
   });
 
@@ -890,7 +840,6 @@
     bgMusic.play().then(() => {
       muted = false;
       soundBtn.style.opacity = '0.7';
-      // gentle fade-in so it doesn't start abruptly
       let v = 0;
       const fade = setInterval(() => {
         v += 0.05;
@@ -898,8 +847,6 @@
         if (v >= 0.5) clearInterval(fade);
       }, 120);
     }).catch((err) => {
-      // Visible diagnostic instead of silent failure — check the browser
-      // console (clic droit > Inspecter > Console) if music doesn't play.
       console.warn('Musique non lancée — vérifiez que "musique.mp3" est bien dans le même dossier que ce fichier HTML.', err);
     });
   }
@@ -914,7 +861,6 @@
   }, {threshold:0.12});
   revealEls.forEach(el => io.observe(el));
 
-  // ---- sound toggle ----
   const soundBtn = document.getElementById('soundBtn');
   let muted = true;
   soundBtn.addEventListener('click', () => {
@@ -945,15 +891,13 @@
     const secsEl = document.getElementById('cd-secs');
     secsEl.textContent = String(secs).padStart(2,'0');
     secsEl.classList.remove('bump');
-    void secsEl.offsetWidth; // restart animation
+    void secsEl.offsetWidth;
     secsEl.classList.add('bump');
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // =====================================================================
-  // ---- "Ajouter au calendrier" (.ics) — fonctionne avec Calendrier iPhone
-  // =====================================================================
+  // ---- "Ajouter au calendrier" (.ics) — fonctionne avec Calendrier iPhone ----
   function buildICSLink({ uid, title, description, location, start, end }){
     const fmt = (d) => d.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
     const escapeICS = (s) => String(s).replace(/([,;])/g,'\\$1').replace(/\n/g,'\\n');
@@ -1001,21 +945,13 @@
     });
   }
 
-  // =====================================================================
-  // ---- RSVP submission -> Google Sheet (via Google Apps Script) -------
-  // =====================================================================
-  // 1. Deploy the Apps Script "Code.gs" (provided separately) as a Web App
-  //    (Déployer > Nouveau déploiement > type "Application Web").
-  // 2. Set "Exécuter en tant que" = Moi, "Qui a accès" = Tout le monde.
-  // 3. Copy the resulting /exec URL and paste it below.
- const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbyEgGOQwb1Lablk0AfLq9EGfq4tXHP_nqDzHVjxrIPdnh73HbUL8X-3nzIBExDWUG4/exec";
+  // ---- RSVP submission -> Google Sheet (via Google Apps Script) ----
+  const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbyEgGOQwb1Lablk0AfLq9EGfq4tXHP_nqDzHVjxrIPdnh73HbUL8X-3nzIBExDWUG4/exec";
 
   const form = document.getElementById('rsvpForm');
   const thanks = document.getElementById('thanks');
   const submitBtn = document.getElementById('submitBtn');
 
-  // Show the adults/children counters only when "Oui" is selected;
-  // hide them entirely (and stop counting them) when "Non" is selected.
   function bindCountsToggle(radioName, wrapId){
     const wrap = document.getElementById(wrapId);
     const radios = form.querySelectorAll(`input[name="${radioName}"]`);
@@ -1034,7 +970,7 @@
     e.preventDefault();
 
     const payload = {
-  source: 'Site1',   // <-- ajouté
+  source: 'Site1',
   nom: document.getElementById('nom').value.trim(),
   prenom: document.getElementById('prenom').value.trim(),
   tefiline: form.querySelector('input[name="tef"]:checked')?.value || '',
@@ -1051,8 +987,6 @@
     submitBtn.textContent = 'Envoi en cours...';
 
     try {
-      // "no-cors" is required for a simple client -> Apps Script POST;
-      // the response is opaque, so we treat any resolved fetch as success.
       await fetch(GOOGLE_SHEET_API_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -1061,8 +995,6 @@
       });
     } catch (err) {
       console.error('Erreur envoi Google Sheet:', err);
-      // Fail open: we still confirm to the guest even if the network call
-      // failed client-side, so as not to block their RSVP experience.
     }
 
     form.classList.add('hide');
